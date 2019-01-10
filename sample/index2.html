@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>ajax</title>
+</head>
+<body>
+<h1>.load()</h1>
+
+<input type="button" value="サンプル1">
+<input type="button" value="サンプル2">
+<input type="button" value="サンプル3">
+<div id="result"></div>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $(function() {
+
+        // htmlを全て読み込む
+        $("[type=button]:eq(0)").on("click", function() {
+            $( "#result" ).load( "test1.html", function() {
+                $("#sample").css("color", "blue");
+            });
+        });
+
+        // htmlの#sampleとpタグのみを読み込む
+        $("[type=button]:eq(1)").on("click", function() {
+            $( "#result" ).load( "test1.html #sample, p", function() {
+                $("#sample").css("color", "blue");
+            });
+        });
+
+        // POST送信もできる
+        $("[type=button]:eq(2)").on("click", function() {
+            $( "#result" ).load( "test2.php", { name: "村田", age: 25 }, function() {
+                alert( "読み込みました。" );
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

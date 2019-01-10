@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+<title>LED Remote Control Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<p class="lead">Table</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>编号 ID</th>
+							<th>描述 DESC</th>
+							<th>状态 STATUS</th>
+							<th>动作 ACTION</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr dev_id="1">
+							<td>1</td>
+							<td>RPi.PCF8574.IO0</td>
+							<td>off</td>
+							<td>
+								<button type="button" class="btn btn-primary btn-xs">Toggle</button>
+							</td>
+						</tr>
+						<tr dev_id="2">
+							<td>2</td>
+							<td>RPi.PCF8574.IO1</td>
+							<td>off</td>
+							<td>
+								<button type="button" class="btn btn-primary btn-xs">Toggle</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script>
+    $(document).ready(function() {
+      $('.btn').on("click", function() {
+        // 获得按钮ID编号 btn在表格中 <tr>中包含设备ID，通过closest访问上级tr，再通过attr取出dev_id属性
+        // 返回 <button type="button" class="btn btn-primary btn-xs">Toggle</button>
+        // console.log(this);
+        // 返回 一个对象
+        // console.log($(this)); 
+
+        // 获得 tr元素
+        var trobj = $(this).parent().parent();
+        // console.log(trobj);
+        // tr元素中包含 dev_id属性
+        var dev_id = trobj.attr('dev_id');
+        console.log(dev_id);
+
+        // 访问该tr元素的所有子td元素
+        var tdobj = $(trobj).children("td");
+
+        var status_obj = $(tdobj).eq(2);
+        var status_str = status_obj.text();
+        console.log(status_str);
+
+        if (status_str == "on") {
+          status_obj.text("off");
+          sendLedControl(dev_id, "off");
+        } else {
+          status_obj.text("on");
+          sendLedControl(dev_id, "on");
+        }
+      });
+
+      function sendLedControl(dev_id, cur_status) {
+        $.ajax({
+          url: '/api/leds/' + dev_id + '/status', // /api/leds/1
+          async: true,
+          dataType: 'json',
+          type: 'PUT',
+          data: JSON.stringify({
+            status: cur_status
+          }),
+          // data: {status:cur_status},
+          // contentType: "application/json; charset=utf8",
+
+          success: function(data, textStatus) {
+            // 返回的内容在
+            // console.log(data.status);
+            console.log("success");
+          },
+
+          error: function(jqXHR, textStatus, errorThrown) {
+            console.log("error");
+          },
+
+        });
+      }
+
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Onbeforeunload</title>
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<h1>onbeforeunload</h1>
+
+<a href="http://search.yahoo.co.jp/r/FOR=QdJTptdV3ihDOyBG14775jq5VKcnPL7c1MmzBVCe.g6Kq5otN.mvTB5w2izu1KvaYhle5UYWirQH9hVqAsz29s_umYwws1.O8qYoVjCmuaOQ8eE4ix32hU0XvZ8nU_jBxL_XMQsafS6u5D8bmDcVyYOpIF30V_kQYg6pw0BJRCymlB3Q2zrCVeSGyD9tmhxgxdo1zQqJE_hT3hdM3U48TkPpc02oPF7YcJDiPvz5.0JFnRfBWvY7Rpn.Gl5gliixE2hfPA--/_ylt=A2RC2U_ukwFa5jYA4duDTwx.;_ylu=X3oDMTBtdTY1Z3BjBHBvcwMyBHNlYwNzcgRzbGsDdGl0bGU-/SIG=12tq9e2er/EXP=1510153646/**http%3A//blog.yuhiisk.com/archive/2016/02/02/alert-with-onbeforeunload.html" onmousedown="return lswap(this,'http%3A//blog.yuhiisk.com/archive/2016/02/02/alert-with-onbeforeunload.html','FOR=QdJTptdV3ihDOyBG14775jq5VKcnPL7c1MmzBVCe.g6Kq5otN.mvTB5w2izu1KvaYhle5UYWirQH9hVqAsz29s_umYwws1.O8qYoVjCmuaOQ8eE4ix32hU0XvZ8nU_jBxL_XMQsafS6u5D8bmDcVyYOpIF30V_kQYg6pw0BJRCymlB3Q2zrCVeSGyD9tmhxgxdo1zQqJE_hT3hdM3U48TkPpc02oPF7YcJDiPvz5.0JFnRfBWvY7Rpn.Gl5gliixE2hfPA--/','A2RC2U_ukwFa5jYA4duDTwx.','X3oDMTBtdTY1Z3BjBHBvcwMyBHNlYwNzcgRzbGsDdGl0bGU-','12tq9e2er','1510153646')">ページ離脱防止のためにJavaScriptでアラートを表示する - イソップブログ</a>
+
+
+
+
+<script>
+window.onbeforeunload = function(e) {
+    return 'ちょっと待ってくださいよ。まだダメですよ。';
+};
+
+</script>
+</body>
+</html>

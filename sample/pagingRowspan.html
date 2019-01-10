@@ -1,0 +1,79 @@
+<!doctype html>
+<html ng-app="plunker">
+
+<head>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="./js/example_paging.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+
+<body>
+
+	<div ng-controller="PaginationDemoCtrl">
+		<pagination total-items="totalItems" ng-model="currentPage"
+			max-size="maxSize" class="pagination-sm" boundary-links="true"
+			rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+		<pre>Page: {{currentPage}} / {{numPages}}</pre>
+
+		<table class="table">
+			<!--  
+			<tr
+				ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+				<td>{{row.name}}</td>
+				<td>{{row.id}}</td>
+			</tr>
+			-->
+			<tbody
+				ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+				<tr>
+					<td width="100" rowspan="3">img</td>
+					<td width="300" colspan="2"><a href="./pagingRowspan.html">{{row.name}}</a></td>
+				</tr>
+				<tr>
+					<td width="150">{{row.id}}</td>
+					<td width="150">{{row.id}}</td>
+				</tr>
+				<tr>
+					<td width="150">{{row.name}}</td>
+					<td width="150">{{row.name}}</td>
+				</tr>
+			</tbody>
+		</table>
+		View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)"><option>3</option>
+			<option>5</option>
+			<option>10</option>
+			<option>20</option>
+			<option>30</option>
+			<option>40</option>
+			<option>50</option></select> records at a time.
+
+		<pagination total-items="totalItems" ng-model="currentPage"
+			ng-change="pageChanged()" class="pagination-sm"
+			items-per-page="itemsPerPage"></pagination>
+		<pre>The selected page no: {{currentPage}}</pre>
+		<button class="btn btn-info" ng-click="setPage(3)">Set
+			current page to: 3</button>
+
+		<hr />
+		<h4>Pager</h4>
+		<pager total-items="totalItems" ng-model="currentPage"
+			items-per-page="itemsPerPage"></pager>
+
+		<hr />
+		<h4>Limit the maximum visible buttons</h4>
+		<pagination total-items="totalItems" ng-model="currentPage"
+			max-size="maxSize" class="pagination-sm" boundary-links="true"
+			items-per-page="itemsPerPage"></pagination>
+		<pagination total-items="totalItems" ng-model="currentPage"
+			max-size="maxSize" class="pagination-sm" boundary-links="true"
+			rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+		<pre>Page: {{currentPage}} / {{numPages}}</pre>
+	</div>
+</body>
+
+</html>

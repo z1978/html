@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS函数返回多个值--oec2003</title>
+</head>
+<body>
+	<input type="button" onclick="getInfo()" value="test" />
+	<script type="text/javascript">
+		function getData() {
+			var info = {
+				"name" : "oec2003",
+				"age" : "25"
+			};
+			return info;
+		}
+		function getInfo() {
+			var info = getData();
+			var name = info["name"];
+			var age = info["age"];
+			alert("姓名：" + name + " 年龄：" + age);
+		}
+	</script>
+</body>
+</html>

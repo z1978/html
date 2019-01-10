@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ImageManager.js Test</title>
+<script src="js/jquery-1.11.1.min.js"></script>
+
+<link rel="import" href="x-component.html">
+</head>
+<body style="margin: 0; padding: 0;">
+	<h1>アニメーションサンプル（画像をスライドしながら表示・非表示させる）</h1>
+	<x-component>
+	<h1>This is Custom Element</h1>
+	</x-component>
+
+
+	<div>
+		<img src="http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg">
+	</div>
+	<div class="contents">
+		<ul>
+		</ul>
+
+	</div>
+
+
+	<script>
+    var includeHtml = function(target, url, hook) {
+      (function($) {
+        $(function() {
+          var $work = $('<div></div>');
+          var appendedGroup = new Object();
+          var apply = function($target) {
+            $('[data-func=' + target + ']').each(function() {
+              var cpn = $work.find("#" + $(this).attr('data-id'));
+              var appended;
+              if (cpn[0]) {
+                var node = cpn.clone().children();
+                if (typeof $(this).attr('data-group') !== 'undefined') {
+                  if (!appendedGroup[$(this).attr('data-group')]) {
+                    appended = $(this).append(node);
+                    appendedGroup[($(this).attr('data-group'))] = true;
+                  }
+                } else {
+                  appended = $(this).append(node);
+                }
+                if (hook) {
+                  hook.call($(node), $(node));
+                }
+
+              }
+            });
+          }
+
+          if ($.support.leadingWhitespace) {
+            $work.load(url, apply);
+          } else {
+            $work.load(url, '', apply);
+          }
+        });
+      }(jQuery));
+    }
+    $(document).ready(function() {
+      console.log("ready!");
+
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      $("ul").append("<li><img src='http://www.creativeapplications.net/wp-content/uploads/2011/08/actelion_tool0004a.jpg'></li>");
+      console.log("add html done!");
+    });
+  </script>
+	<script src="js/ImageManager.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
