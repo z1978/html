@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>csv2chart
+    </title>
+
+    <!--
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    -->
+    <script src="../libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script src="../libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Chart.js — Line Chart Demo</h2>
+
+      <input type="file" name="select" id="select" />
+      <div id="result"></div>
+      <canvas id="demo2" height="10px" width="30px"></canvas>
+
+
+
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <p id="caption">The chart is displaying sales & purchase & profit</p>
+    </div>
+
+    <script src="csv.js">
+    </script>
+    <script src="script.js">
+    </script>
+
+
+<div class="wrap">
+	<p class="attention">単位：百万円</p>
+	<!-- グラフ用キャンバス要素 -->
+	<canvas id="demo" height="10px" width="30px"></canvas>
+	<!-- 数値用表組み -->
+	<table id="graph01">
+		<tr>
+			<th><span>2011年</span></th>
+			<td><span>250</span>億円</td>
+		</tr>
+		<tr>
+			<th><span>2012年</span></th>
+			<td><span>402</span>億円</td>
+		</tr>
+		<tr>
+			<th><span>2013年</span></th>
+			<td><span>346</span>億円</td>
+		</tr>
+	</table>
+</div>
+<script src="chart2.js">
+</script>
+
+<script src="chart3.js">
+</script>
+
+
+  </body>
+</html>
