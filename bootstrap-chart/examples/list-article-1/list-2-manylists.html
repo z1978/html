@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>List Sample 1</title>
+<style>
+body{ font-family : Arial, Helvetica, sans-serif; font-size : 1em;}
+h1 {font-size : 18pt;	color : #000066;}
+h2 {font-size : 14pt;	color : #000066;}
+a:hover{text-decoration : none;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">
+/*function to load a list*/
+function loadlist(selobj,url,nameattr)
+{
+    $(selobj).empty();
+    $.getJSON(url,{},function(data)
+    {
+        $.each(data, function(i,obj)
+        {
+            $(selobj).append($('<option></option>').val(obj[nameattr]).html(obj[nameattr]));
+        });
+    });
+}
+
+$(function()
+{ 
+   loadlist($('select#country1').get(0),/*the 'select' object*/
+    'get-list.php?getlist=country',/*the url of the server side script*/
+    'country'/*The name of the field in the returned list*/
+    );
+   //By default, jQuery will load from cache if the request is same
+   loadlist($('select#country2').get(0), 'get-list.php?getlist=country','country');
+   loadlist($('select#country3').get(0), 'get-list.php?getlist=country','country');
+});
+</script>
+</head>
+
+<body>
+<h1>Dynamically lists: multiple lists</h1>
+<p>
+Country 1:<select name='country1' id='country1' size='1'></select>
+</p>
+<p>
+Country 2:<select name='country2' id='country2' size='1'></select>
+</p>
+<p>
+Country 3:<select name='country3' id='country3' size='1'></select>
+</p>
+
+</body>
+</html>
