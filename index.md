@@ -1,5 +1,9 @@
 ## Pages
-You can use the [samples](https://z1978.github.io/html/sample)
+You can use the [bootstrap-chart](https://z1978.github.io/html/bootstrap-chart)
+You can use the [croppic](https://z1978.github.io/html/croppic)
+You can use the [html5up-eventually](https://z1978.github.io/html/html5up-eventually)
+You can use the [sample](https://z1978.github.io/html/sample)
+You can use the [samples](https://z1978.github.io/html/samples)
 
 ## Welcome to GitHub Pages
 
