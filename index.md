@@ -1,3 +1,6 @@
+## Pages
+You can use the [samples](https://z1978.github.io/html/sample)
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/z1978/html/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
