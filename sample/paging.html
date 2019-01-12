@@ -62,7 +62,7 @@ nav li {
 	<script>
 var app = angular.module("myApp", []);
 app.controller("myCtrl", function ($scope, $http) {
-$http.get("https://z1978.github.io/html/sample/api/getData1.json").then(function (response) {
+$http.get("http://localhost/zac/api/getData1.json").then(function (response) {
 //数据源
 $scope.data = response.data.records;
 //分页总数
